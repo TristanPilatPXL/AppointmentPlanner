@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppointmentPlanner.Domain\AppointmentPlanner.Domain.csproj" />
+    <ProjectReference Include="..\AppointmentPlanner.Presentation\AppointmentPlanner.Application.csproj" />
+  </ItemGroup>
+
+</Project>

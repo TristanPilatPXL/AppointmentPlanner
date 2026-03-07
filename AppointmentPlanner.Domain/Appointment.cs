@@ -10,33 +10,31 @@ namespace AppointmentPlanner.Domain
     public class Appointment
     {
         public string Title { get; set; }
-        public DateTime Starttime { get; set; }
-        public DateTime Endtime { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
         public int ParticipantsCount { get; set; }
         public Room Room { get; set; }
         public bool IsCancelled { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public TimeSpan Duartion { get;}
+        public TimeSpan Duration => EndTime - StartTime;
 
-        public Appointment(string title, DateTime starttime, DateTime endtime, int participantsCount, DateTime createdAt)
+        public Appointment(string title, DateTime startTime, DateTime endTime, int participantsCount, DateTime createdAt)
         {
             if (string.IsNullOrWhiteSpace(title))
                 throw new ArgumentException("Title mag niet leeg zijn.");
 
-            if (endtime > starttime)
-                throw new AggregateException("EndTime moet later zijn dan StartTime.");
+            if (endTime <= startTime)
+                throw new ArgumentException("EndTime moet later zijn dan StartTime.");
 
             if (participantsCount < 1)
-                throw new AggregateException("ParticipantsCount moet >= 1 zijn.");
+                throw new ArgumentException("ParticipantsCount moet >= 1 zijn.");
 
-            // if (createdAt < DateTime())
-            //  throw new AggregateException("ParticipantsCount moet >= 1 zijn.");
-
-            title = Title;
-            starttime = Starttime;
-            endtime = Endtime;
-            participantsCount = ParticipantsCount;
+            Title = title;
+            StartTime = startTime;
+            EndTime = endTime;
+            ParticipantsCount = participantsCount;
+            CreatedAt = createdAt;
         }
     }
 }

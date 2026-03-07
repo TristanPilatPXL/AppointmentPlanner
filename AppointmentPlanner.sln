@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36203.30 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentPlanner.Presentation", "AppointmentPlanner\AppointmentPlanner.Presentation.csproj", "{E47A29D7-AC2B-4CB5-8D1D-A35F715012BF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentPlanner.Application", "AppointmentPlanner.Presentation\AppointmentPlanner.Application.csproj", "{023183B4-88A0-446B-9A25-84BCE303B2C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentPlanner.Domain", "AppointmentPlanner.Domain\AppointmentPlanner.Domain.csproj", "{D966844D-5F85-4205-8735-09DDB23A3370}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentPlanner.Infrastructure", "AppointmentPlanner.Infrastructure\AppointmentPlanner.Infrastructure.csproj", "{AD8F2396-2173-4B2C-8BC3-38457F169556}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentPlanner.Presentation", "WpfApp1\AppointmentPlanner.Presentation.csproj", "{D6A39FC1-0012-48DF-B32E-9CC20836D085}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E47A29D7-AC2B-4CB5-8D1D-A35F715012BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E47A29D7-AC2B-4CB5-8D1D-A35F715012BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E47A29D7-AC2B-4CB5-8D1D-A35F715012BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E47A29D7-AC2B-4CB5-8D1D-A35F715012BF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{023183B4-88A0-446B-9A25-84BCE303B2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{023183B4-88A0-446B-9A25-84BCE303B2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{023183B4-88A0-446B-9A25-84BCE303B2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{AD8F2396-2173-4B2C-8BC3-38457F169556}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD8F2396-2173-4B2C-8BC3-38457F169556}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD8F2396-2173-4B2C-8BC3-38457F169556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6A39FC1-0012-48DF-B32E-9CC20836D085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6A39FC1-0012-48DF-B32E-9CC20836D085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6A39FC1-0012-48DF-B32E-9CC20836D085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6A39FC1-0012-48DF-B32E-9CC20836D085}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

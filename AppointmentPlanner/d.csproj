@@ -94,5 +94,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppointmentPlanner.Domain\AppointmentPlanner.Domain.csproj">
+      <Project>{d966844d-5f85-4205-8735-09ddb23a3370}</Project>
+      <Name>AppointmentPlanner.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppointmentPlanner.Presentation\AppointmentPlanner.Application.csproj">
+      <Project>{023183b4-88a0-446b-9a25-84bce303b2c1}</Project>
+      <Name>AppointmentPlanner.Application</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
