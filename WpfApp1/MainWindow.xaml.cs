@@ -22,5 +22,10 @@ namespace AppointmentPlanner.Presentation
         {
             InitializeComponent();
         }
+
+        private void Add(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

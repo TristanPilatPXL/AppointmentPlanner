@@ -2,11 +2,13 @@
 {
     public class Room
     {
+
+        //hier terug waardes in krijgen en terug in opslaan
         public Guid Number { get; set; }
         public string Name { get; set; }
         public int MaxCapacity { get; set; }
 
-        public Room(string name, int maxCapacity)
+        public Room(string name, int maxCapacity)// teryg regels toepassen
         {
             if (string.IsNullOrWhiteSpace(name))          // was: Name (property ipv parameter)
                 throw new ArgumentException("Name mag niet leeg zijn.");

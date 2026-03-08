@@ -30,7 +30,7 @@
                     Grid.Row="2">
             <Button Content="Add Appointment"
                     Width="150"
-                    Margin="0,0,10,0"/>
+                    Margin="0,0,10,0" Click="Add"/>
             <Button Content="Cancel Appointment"
                     Width="150"
                     Margin="0,0,10,0"/>
