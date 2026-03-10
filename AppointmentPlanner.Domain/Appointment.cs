@@ -32,6 +32,9 @@ namespace AppointmentPlanner.Domain
             if (participantsCount < 1)
                 throw new ArgumentException("ParticipantsCount moet >= 1 zijn.");
 
+            if (startTime.Hour < 8 || startTime.Hour >= 20)
+                throw new ArgumentException("StartTime moet tussen 08:00 en 20:00 liggen.");
+
 
             //hier wijze we de waarden toe in de get sets hier boven
             Title = title;

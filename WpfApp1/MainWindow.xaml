@@ -10,32 +10,51 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Rij 0: Room en dag selectie -->
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
-            <TextBlock Text="Room:" Margin="0,0,10,0"/>
+            <TextBlock Text="Room:" VerticalAlignment="Center" Margin="0,0,10,0"/>
             <ComboBox x:Name="RoomComboBox" Width="200" Margin="0,0,20,0"/>
-            <TextBlock Text="Day:" Margin="0,0,10,0"/>
+            <TextBlock Text="Day:" VerticalAlignment="Center" Margin="0,0,10,0"/>
             <DatePicker x:Name="DayPicker" Width="150"/>
         </StackPanel>
 
+        <!-- Rij 1: Invoervelden voor nieuwe appointment -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,10">
+            <TextBlock Text="Title:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="TitleTextBox" Width="150" Margin="0,0,15,0"/>
+
+            <TextBlock Text="Start (uu:mm):" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="StartTimeTextBox" Width="80" Margin="0,0,15,0"/>
+
+            <TextBlock Text="End (uu:mm):" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="EndTimeTextBox" Width="80" Margin="0,0,15,0"/>
+
+            <TextBlock Text="Deelnemers:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="ParticipantsTextBox" Width="50"/>
+        </StackPanel>
+
+        <!-- Rij 2: Lijst met appointments -->
         <ListBox x:Name="appointmentsListBox"
-                 Grid.Row="1"
+                 Grid.Row="2"
                  Margin="0,0,0,10"/>
 
+        <!-- Rij 3: Knoppen -->
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Right"
-                    Grid.Row="2">
+                    Grid.Row="3">
             <Button Content="Add Appointment"
                     Width="150"
-                    Margin="0,0,10,0" Click="Add"/>
+                    Margin="0,0,10,0" Click="Add_Click"/>
             <Button Content="Cancel Appointment"
                     Width="150"
-                    Margin="0,0,10,0"/>
+                    Margin="0,0,10,0" Click="Cancel_Click"/>
             <Button Content="Refresh"
-                    Width="150"/>
+                    Width="150" Click="Refresh_Click"/>
         </StackPanel>
 
     </Grid>

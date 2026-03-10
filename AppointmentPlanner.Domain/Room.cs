@@ -8,7 +8,7 @@
         public string Name { get; set; }
         public int MaxCapacity { get; set; }
 
-        public Room(string name, int maxCapacity)// teryg regels toepassen
+        public Room(string name, int maxCapacity, Guid number)// teryg regels toepassen
         {
             if (string.IsNullOrWhiteSpace(name))          // was: Name (property ipv parameter)
                 throw new ArgumentException("Name mag niet leeg zijn.");
@@ -18,7 +18,9 @@
 
             Name = name;                                   // was: name = Name (omgekeerd)
             MaxCapacity = maxCapacity;                      // was: maxCapacity = MaxCapacity (omgekeerd)
-            Number = Guid.NewGuid();
+            Number = Guid.NewGuid();//Number wordt automatisch toegewezen
+
+
         }
     }
 }
