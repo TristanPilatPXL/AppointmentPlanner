@@ -1,6 +1,7 @@
 ﻿using AppointmentPlanner.Domain;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -16,7 +17,7 @@ namespace AppointmentPlanner.Infrastructure
         private readonly string _dataFolder;
         private readonly string _filePath;
 
-        public AppointmentJsonRepository()
+        public AppointmentJsonRepository()//check of folder en bestand bestaat zo nee dan maak het aan
         {
             _dataFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
             _filePath = Path.Combine(_dataFolder, "appointments.json");
@@ -31,19 +32,27 @@ namespace AppointmentPlanner.Infrastructure
 
 
 
-        public List<Appointment> Get()
+        public List<Appointment> Get()//leest het bestand
         {
-            string json = File.ReadAllText(_filePath);
-            return JsonSerializer.Deserialize<List<Appointment>>(json) ?? new List<Appointment>();
+            string json = File.ReadAllText(_filePath);//hier maken we duidleijk welk bestand het moet lezen
+            return JsonSerializer.Deserialize<List<Appointment>>(json) ?? new List<Appointment>();//hier zetten we json tekst terug om naar c# objecten
 
         }
 
         public void Add(Appointment appointment)
         {
-            List<Appointment> appointments = Get();   // Lees bestaande data
-            appointments.Add(appointment);               // Voeg toe
-            string json = JsonSerializer.Serialize(appointments);
-            File.WriteAllText(_filePath, json);          // Sla alles op
+            try
+            {
+                List<Appointment> appointments = Get();   // Lees bestaande data
+                appointments.Add(appointment);// Voeg toe
+                string json = JsonSerializer.Serialize(appointments, new JsonSerializerOptions { WriteIndented = true });// hier zetten we c# objecten om naar json
+                File.WriteAllText(_filePath, json); // Sla alles op
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("[AppointmentJsonRepository] Error writing file: " + ex);
+                throw;
+            }
         }
 
         public void Update(Appointment appointment)
@@ -71,7 +80,7 @@ namespace AppointmentPlanner.Infrastructure
         }
 
  
-
+        
         public void Delete(Appointment appointment)
         {
             // Stap 1: Lees alle bestaande appointments uit het JSON bestand
@@ -80,17 +89,17 @@ namespace AppointmentPlanner.Infrastructure
 
             // Stap 2: Zoek de appointment die overeenkomt met de meegegeven titel
             // FirstOrDefault geeft null terug als er niks gevonden wordt
-            Appointment toRemove = appointments.FirstOrDefault(a =>
+            Appointment toCancel = appointments.FirstOrDefault(a =>
                 a.Title.Equals(appointment.Title, StringComparison.OrdinalIgnoreCase));
 
 
             // Stap 3: Als de appointment niet bestaat, gooi een foutmelding
-            if (toRemove == null)
+            if (toCancel == null)
                 throw new InvalidOperationException("Appointment niet gevonden.");
 
 
             // Stap 4: Verwijder de gevonden appointment uit de lijst
-            appointments.Remove(toRemove);
+            appointments.Remove(toCancel);
 
 
             // Stap 5: Zet de bijgewerkte lijst terug om naar JSON
@@ -98,6 +107,36 @@ namespace AppointmentPlanner.Infrastructure
 
 
             // Stap 6: Overschrijf het bestand met de nieuwe lijst (zonder de verwijderde)
+            File.WriteAllText(_filePath, json);
+        }
+
+
+
+        public void Cancel(Appointment appointment)
+        {
+            // Stap 1: Lees alle bestaande appointments uit het JSON bestand
+            List<Appointment> appointments = Get();
+
+            // Stap 2: Zoek de appointment die overeenkomt met de meegegeven titel
+            // FirstOrDefault geeft null terug als er niks gevonden wordt
+            Appointment toCancel = appointments.FirstOrDefault(a =>
+                a.Title.Equals(appointment.Title, StringComparison.OrdinalIgnoreCase));
+
+            // Stap 3: Als de appointment niet bestaat, gooi een foutmelding
+            if (toCancel == null)
+                throw new InvalidOperationException("Appointment niet gevonden.");
+
+            // Stap 4: Markeer de gevonden appointment als geannuleerd (zet IsCancelled op true)
+            if (!toCancel.IsCancelled)
+            {
+                toCancel.IsCancelled = true;
+                // (optioneel) toCancel.CancelledAt = DateTime.Now; // als je een timestamp wil bijhouden
+            }
+
+            // Stap 5: Zet de bijgewerkte lijst terug om naar JSON (indented voor leesbaarheid)
+            string json = JsonSerializer.Serialize(appointments, new JsonSerializerOptions { WriteIndented = true });
+
+            // Stap 6: Overschrijf het bestand met de nieuwe lijst (met de geannuleerde flag)
             File.WriteAllText(_filePath, json);
         }
     }

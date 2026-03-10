@@ -7,6 +7,9 @@ using System.Xml.Linq;
 
 namespace AppointmentPlanner.Domain
 {
+    /// <summary>
+    /// hier definieer we properties en met basic regels
+    /// </summary>
     public class Appointment
     {
         //domain zijn nut is om waardes te krijgen met de get en op te slaan met de set

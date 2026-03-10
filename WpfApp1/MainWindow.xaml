@@ -4,6 +4,7 @@
         Title="Meeting Room Scheduler"
         Height="600"
         Width="900"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="10">
@@ -21,6 +22,7 @@
             <ComboBox x:Name="RoomComboBox" Width="200" Margin="0,0,20,0"/>
             <TextBlock Text="Day:" VerticalAlignment="Center" Margin="0,0,10,0"/>
             <DatePicker x:Name="DayPicker" Width="150"/>
+            <Label x:Name="gebruiker" Content="" Margin="300,0,0,0"/>
         </StackPanel>
 
         <!-- Rij 1: Invoervelden voor nieuwe appointment -->

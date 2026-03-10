@@ -22,6 +22,7 @@ namespace AppointmentPlanner.Presentation
         public Login()
         {
             InitializeComponent();
+
             
         }
 
@@ -33,7 +34,13 @@ namespace AppointmentPlanner.Presentation
 
             if (login == Naam.Text && ww == Passwordbox.Password)
             {
-                MainWindow();
+                MainWindow mainWindow = new MainWindow(login);//data doorgeven naar andere window
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Probeer opniuew.");
             }
 
             

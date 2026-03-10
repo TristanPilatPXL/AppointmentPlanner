@@ -77,7 +77,8 @@ namespace AppointmentPlanner.Application
 
         public void CancelAppointment(Appointment cancelAppointment)
         {
-            _appointmentjsonrepository.Delete(cancelAppointment);
+            _appointmentjsonrepository.Cancel(cancelAppointment);
+
 
         }
 

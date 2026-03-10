@@ -9,9 +9,11 @@ namespace AppointmentPlanner.Presentation
     {
         private readonly PlannerService _service;
 
-        public MainWindow()
+        public MainWindow(string Login)
         {
             InitializeComponent();
+
+            gebruiker.Content = Login;
 
             AppointmentJsonRepository jsonRepository = new AppointmentJsonRepository();
             RoomCsvRepository csvRepository = new RoomCsvRepository();
@@ -46,6 +48,7 @@ namespace AppointmentPlanner.Presentation
 
                 // Voeg toe via de service
                 _service.AddAppointment(title, startTime, endTime, participants);
+
 
                 MessageBox.Show("Appointment toegevoegd!");
                 RefreshList();
