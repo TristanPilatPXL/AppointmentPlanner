@@ -1,0 +1,21 @@
+﻿<Window x:Class="AppointmentPlanner.Presentation.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppointmentPlanner.Presentation"
+        mc:Ignorable="d"
+        Title="Login" Height="300" Width="250">
+    <Grid>
+        <StackPanel>
+            <Label Content="Login" FontSize="50" HorizontalAlignment="Center"></Label>
+            <Label Content="Naam" HorizontalAlignment="Center"></Label>
+            <TextBox x:Name="Naam" Margin="20,0,20,0"> </TextBox>
+
+            <Label x:Name="Wachtwoord" Content="Wachtwoord" HorizontalAlignment="Center"></Label>
+            <PasswordBox x:Name="Passwordbox" Margin="20,0,20,0"></PasswordBox>
+
+            <Button Margin="20" Width="100" Content="Verder" HorizontalAlignment="Center" Click="Verder"></Button>
+        </StackPanel>
+    </Grid>
+</Window>
